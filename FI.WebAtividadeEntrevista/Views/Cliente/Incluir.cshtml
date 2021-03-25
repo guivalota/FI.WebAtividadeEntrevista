@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Cadastrar Cliente";
+}
+@section scripts{
+    <script>
+        var urlPost = '@Url.Action("Incluir", "Cliente", new { area = "" })';
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#CPF").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+            $("#CPFBeneficiario").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+        });
+    </script>
+    <script>
+        $(function () {
+            $("#BtnMoldaBeneficiario").click(function () {
+                $("#modalBeneficiario").load("Details?id=1", function () {
+                    $("#modalBeneficiario").modal();
+                })
+            });
+        })
+    </script>
+
+
+
+    @Scripts.Render("~/bundles/clientes")
+}
+<h2>@Html.Raw(ViewBag.Title)</h2>
+@Html.Partial("Forms")
